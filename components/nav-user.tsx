@@ -31,8 +31,6 @@ export function NavUser({ user }: { user: Session["user"] }) {
   const userDataForNav = {
     name: user.name ?? "Usuario Desconocido",
     email: user.email ?? "",
-    // Tienes que proporcionar un valor para `avatar`.
-    // Si NextAuth no lo proporciona, usa un valor por defecto o el avatar de la sesión.
     image: user.image ?? "/default-avatar.png",
     id: user.id,
     rol: user.rol,
