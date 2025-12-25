@@ -35,7 +35,6 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-// --- Componente de Cliente Adaptado ---
 export default function ChartAreaInteractive({
   title,
   areaName,

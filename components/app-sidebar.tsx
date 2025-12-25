@@ -19,10 +19,10 @@ import {
   IconUsers,
 } from "@tabler/icons-react";
 
-import { NavDocuments } from "@/components/nav-documents";
-import { NavMain } from "@/components/nav-main";
-import { NavSecondary } from "@/components/nav-secondary";
-import { NavUser } from "@/components/nav-user";
+import { NavDocuments } from "@/components/nav/nav-documents";
+import { NavMain } from "@/components/nav/nav-main";
+import { NavSecondary } from "@/components/nav/nav-secondary";
+import { NavUser } from "@/components/nav/nav-user";
 import {
   Sidebar,
   SidebarContent,
@@ -39,11 +39,6 @@ interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
 }
 
 const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
   navMain: [
     {
       title: "Dashboard",

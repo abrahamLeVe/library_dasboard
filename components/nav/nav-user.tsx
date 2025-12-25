@@ -24,7 +24,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { Session } from "next-auth";
-import { SignOut } from "./signout-button";
+import { SignOut } from "../auth/signout-button";
 
 export function NavUser({ user }: { user: Session["user"] }) {
   const { isMobile } = useSidebar();

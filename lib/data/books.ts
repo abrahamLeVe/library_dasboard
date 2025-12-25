@@ -6,7 +6,7 @@ const ITEMS_PER_PAGE = 10;
 /* ============================================================
 📄 PAGINACIÓN DE LIBROS
 ============================================================ */
-export async function fetchBooksPages(query: string) {
+export async function fetchBooksPages(query: string, itemsPerPage: number) {
   try {
     const data = await sql/*sql*/ `
       SELECT COUNT(DISTINCT l.id) AS count
@@ -29,7 +29,7 @@ export async function fetchBooksPages(query: string) {
         a.nombre ILIKE ${`%${query}%`} OR
         p.nombre ILIKE ${`%${query}%`}
     `;
-    return Math.ceil(Number(data[0].count) / ITEMS_PER_PAGE);
+    return Math.ceil(Number(data[0].count) / itemsPerPage);
   } catch (error) {
     console.error("❌ Database Error:", error);
     throw new Error("Failed to fetch total number of books.");
@@ -39,8 +39,13 @@ export async function fetchBooksPages(query: string) {
 /* ============================================================
 📚 LIBROS FILTRADOS (CON PÁGINAS)
 ============================================================ */
-export async function fetchFilteredBooks(query: string, currentPage: number) {
-  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+export async function fetchFilteredBooks(
+  query: string,
+  currentPage: number,
+  itemsPerPage: number
+) {
+  // <--- Nuevo argumento
+  const offset = (currentPage - 1) * itemsPerPage;
 
   try {
     const data = await sql/*sql*/ `
@@ -83,7 +88,7 @@ export async function fetchFilteredBooks(query: string, currentPage: number) {
       GROUP BY 
         l.id, f.nombre, c.nombre, e.nombre
       ORDER BY l.created_at DESC
-      LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset};
+      LIMIT ${itemsPerPage} OFFSET ${offset};
     `;
     return data;
   } catch (error) {

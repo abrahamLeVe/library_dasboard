@@ -1,8 +1,6 @@
-import { DataTable } from "@/components/data-table";
-import LibrosChartWrapper from "@/components/libros-chart-wrapper";
+import LibrosChartWrapper from "@/components/chart/chart-libros-wrapper";
 import CardWrapper from "@/components/section-cards";
 import { Metadata } from "next";
-import data from "../data.json";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -17,7 +15,7 @@ export default async function Page() {
       <div className="px-4 lg:px-6">
         <LibrosChartWrapper />
       </div>
-      <DataTable data={data} />
+      {/* <DataTable data={data} /> */}
     </>
   );
 }
